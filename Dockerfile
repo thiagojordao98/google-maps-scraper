@@ -1,31 +1,17 @@
-FROM node:18
+# Imagem oficial do Puppeteer já com Chromium configurado
+FROM ghcr.io/puppeteer/puppeteer:22.8.2
 
-# Dependências necessárias para o Chromium do Puppeteer
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    libnss3 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libgbm1 \
-    libasound2 \
-    libpangocairo-1.0-0 \
-    libxss1 \
-    libgtk-3-0 \
-    libxshmfence1 \
-    libglu1 \
-    fonts-liberation \
-    libappindicator3-1 \
-    xdg-utils \
-    && rm -rf /var/lib/apt/lists/*
-
+# Configura diretório de trabalho
 WORKDIR /app
 
+# Copia os arquivos do projeto
 COPY . .
 
+# Instala as dependências (usa o Chromium que já vem na imagem)
 RUN npm install
 
+# Expõe a porta da API
 EXPOSE 3000
 
+# Comando para iniciar a aplicação
 CMD ["npm", "start"]
