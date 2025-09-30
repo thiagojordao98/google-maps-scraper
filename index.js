@@ -19,7 +19,7 @@ app.get("/search", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: true,
-      executablePath: "/usr/bin/google-chrome", // Caminho para o Chrome instalado
+      // executablePath: "/usr/bin/google-chrome", // Caminho para o Chrome instalado
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
