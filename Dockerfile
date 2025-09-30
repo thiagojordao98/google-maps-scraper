@@ -4,6 +4,8 @@ FROM ghcr.io/puppeteer/puppeteer:22.8.2
 # Configura diretório de trabalho
 WORKDIR /app
 
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+
 # Copia os arquivos do projeto
 COPY . .
 
