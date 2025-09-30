@@ -19,13 +19,14 @@ app.get("/search", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: true,
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium-browser",
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH, // usa o Chromium correto da imagem
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
-        "--lang=pt-BR", // Define o idioma do navegador como português
+        "--lang=pt-BR",
       ],
     });
+
 
     const page = await browser.newPage();
 
